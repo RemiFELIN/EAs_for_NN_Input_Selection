@@ -64,7 +64,7 @@ for i in range(NOMBRE_LIGNES):
             new_y = round(sum(dataset[i][-4:]), 2)
             dataset[i][j] = new_y
             mean_y.append(new_y)
-    # Les derniers 'y' doivent étre effacé
+    # Les derniers 'y' doivent étre effacés
     dataset[i] = dataset[i][:-3]
 dataset = dataset[:NOMBRE_LIGNES]
 
@@ -222,7 +222,8 @@ def crossover(individual1, individual2):
             individual1[0][1][i] = individual1[0][1][i] + individual2[0][1][i]
         # On regénère les poids
         individual1[1] = generate_weight_matrix(individual1[0][0], individual1[0][1])
-        return individual1, individual2
+        # On retourne les 2 individus qui ont été merge (et qui sont donc indentiques)
+        return individual1, individual1
     else:
         # On retourne les individus sans rien faire
         return individual1, individual2
